@@ -23,7 +23,8 @@ jobs:
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - name: Install dependencies
       run: |
-        sudo apt install npm
+        sudo apt update
+        sudo apt install --no-install-recommends npm
         sudo npm install -g katex
     - name: Create local changes
       run: |
