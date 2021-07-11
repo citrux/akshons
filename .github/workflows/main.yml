@@ -21,10 +21,15 @@ jobs:
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+    - name: Install dependencies
+      run: |
+        sudo apt install npm
+        sudo npm install -g katex
     - name: Create local changes
       run: |
         mkdir xxx
         cp README.md xxx/readme.md
+        echo "\lim_{x\\\\to 0}\\\\frac{\sin x}{x} = 1" | katex -d > xxx/limit.html
     - name: Commit files
       run: |
         cd xxx
